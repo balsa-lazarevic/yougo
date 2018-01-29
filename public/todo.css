@@ -127,3 +127,7 @@ body {
 .strike-through-completed {
     text-decoration: line-through;
 }
+
+.search-bar {
+    margin-top: 10px;
+}

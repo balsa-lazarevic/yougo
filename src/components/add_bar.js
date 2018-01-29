@@ -29,7 +29,6 @@ class AddBar extends Component {
     }
     onInputChange(term) {
       this.setState({term});
-      console.log(this.state);
     }
 
     addItem() {
@@ -37,12 +36,20 @@ class AddBar extends Component {
       var pass = true;
       //Prvo provjerava pocetno veliko slovo
       var validate = this.state.term;
-      if(validate[0] == validate[0].toUpperCase()) {console.log(this.state);}else{console.log('pocinje malim slovom'); pass = false;}
+      if(validate[0] === validate[0].toUpperCase()) { }else{ pass = false; }
+        //Provjerava je li pocetni space
+        if(validate[0] === ' '){ pass = false;}
       //Drugo, provjerava alfanumeric i space
-      if(validate.match(/^[ a-zA-Z0-9]+$/)) { console.log('moze');}else{console.log('ne moze'); pass = false;};
+      if(validate.match(/^[ a-zA-Z0-9]+$/)) { }else{ pass = false;};
 
       //Na kraju ubacuje ako je sve prosao
-      
+      if(pass)
+      {
+        console.log('Moze u tasks');
+        //Promijeni state tasks u App.js
+
+      }
+
     }
 }
 

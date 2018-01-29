@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddBar from './components/add_bar';
+import SearchBar from './components/search_bar';
 import ToDoList from './components/todo_list';
 import Filter from './components/filter';
 import logo from './logo.svg';
@@ -14,7 +15,8 @@ class App extends Component {
           {name: 'Test 1', index: 1 , status: 'active'},
           {name:'Test 2', index: 2 , status: 'completed'},
           {name:'Test 3', index: 3 , status: 'completed'}
-          ]
+          ],
+          filter: 'all'
         }
     }
     //this.setState({ toShow: this.state.active});
@@ -24,6 +26,7 @@ class App extends Component {
       <div class="card todo-card">
         <div class="card-body">
           <AddBar />
+          <SearchBar />
           <ToDoList
           tasks={this.state.tasks}/>
           <Filter />
@@ -31,7 +34,7 @@ class App extends Component {
       </div>
     );
   }
-  
+
 }
 
 export default App;
