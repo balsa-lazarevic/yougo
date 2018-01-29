@@ -4,7 +4,7 @@ class Filter extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {show: 'active'};
+        this.state = {show: 'all'};
     }
 
     render () {

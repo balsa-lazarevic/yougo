@@ -2,10 +2,10 @@ import React from 'react';
 import ToDoItem from './todo_item';
 
 const ToDoList = (props) => {
-    const todoItems = props.tasks.map((task, index) => {
+    const todoItems = props.tasks.map((task) => {
         return <ToDoItem
-        key = {index}
-        task = {[task, index]}/>
+        key = {task.index}
+        task = {task}/>
     });
 
     return (

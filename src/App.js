@@ -10,9 +10,11 @@ class App extends Component {
         super(props);
 
         this.state = {
-          active: ['Test 1', 'Test 2'],
-          completed: [],
-          toShow: ['Test 1', 'Test 2']
+          tasks: [
+          {name: 'Test 1', index: 1 , status: 'active'},
+          {name:'Test 2', index: 2 , status: 'completed'},
+          {name:'Test 3', index: 3 , status: 'completed'}
+          ]
         }
     }
     //this.setState({ toShow: this.state.active});
@@ -23,12 +25,13 @@ class App extends Component {
         <div class="card-body">
           <AddBar />
           <ToDoList
-          tasks={this.state.toShow}/>
+          tasks={this.state.tasks}/>
           <Filter />
         </div>
       </div>
     );
   }
+  
 }
 
 export default App;

@@ -7,9 +7,6 @@ class AddBar extends Component {
         this.state = {term: ''};
     }
 
-    //const add_term = this.state.term;
-    //const isEnabled =  add_term[0] === add_term[0].toUpperCase;
-
     render () {
         return (
           <div className="add-bar">
@@ -25,16 +22,28 @@ class AddBar extends Component {
                     onChange={event => this.onInputChange(event.target.value)}/>
                 </div>
                 <button
-                //disabled={!isEnabled} 
-                type="submit" class="btn btn-primary col-sm-4">Add</button>
+                type="button" class="btn btn-primary col-sm-4" onClick={event => this.addItem()}>Add</button>
             </form>
           </div>
         );
     }
     onInputChange(term) {
       this.setState({term});
-      //this.props.onAddTermChange(term);
+      console.log(this.state);
+    }
+
+    addItem() {
+      //Validate-uje
+      var pass = true;
+      //Prvo provjerava pocetno veliko slovo
+      var validate = this.state.term;
+      if(validate[0] == validate[0].toUpperCase()) {console.log(this.state);}else{console.log('pocinje malim slovom'); pass = false;}
+      //Drugo, provjerava alfanumeric i space
+      if(validate.match(/^[ a-zA-Z0-9]+$/)) { console.log('moze');}else{console.log('ne moze'); pass = false;};
+
+      //Na kraju ubacuje ako je sve prosao
+      
     }
 }
 
-export default AddBar;
+;export default AddBar;

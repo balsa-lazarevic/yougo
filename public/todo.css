@@ -110,6 +110,7 @@ body {
   color: rgba(255, 255, 255, .5);
 }
 
+/* Moj CSS */
 .todo-card {
   min-width: 400px;
 }
@@ -121,4 +122,8 @@ body {
 
 .custom-control.custom-checkbox {
     margin-bottom: 5px;
+}
+
+.strike-through-completed {
+    text-decoration: line-through;
 }
