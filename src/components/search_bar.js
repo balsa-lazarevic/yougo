@@ -10,12 +10,12 @@ class SearchBar extends Component {
     render () {
         return (
           <div className="search-bar">
-            <form class="form-inline">
-                <div class="form-group col-sm-8">
-                  <label for="input-term" class="sr-only">Input term</label>
+            <form className="form-inline">
+                <div className="form-group col-sm-8">
+                  <label htmlFor="input-term" className="sr-only">Input term</label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="input-term"
                     placeholder="Search tasks"
                     value={this.state.term}
