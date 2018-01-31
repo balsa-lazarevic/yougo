@@ -3,7 +3,6 @@ import AddBar from './components/add_bar';
 import SearchBar from './components/search_bar';
 import ToDoList from './components/todo_list';
 import Filter from './components/filter';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -13,12 +12,14 @@ class App extends Component {
         this.state = {
           tasks: [
             {name:'Create ToDo list', index: 1, status: 'completed'},
-            {name:'Add a ToDo item', index: 1, status: 'active'}
+            {name:'Add a ToDo item', index: 2, status: 'active'}
           ],
-          filter: 'all'
+          filter: 'all',
+          search: ''
         }
     }
 
+    //Dodaje novi Item - samo ako je validate-ovan
     addItem = (validatedItem) => {
           //dodaje item
           var tasks = this.state.tasks;
@@ -31,8 +32,16 @@ class App extends Component {
           console.log(tasks);
       };
 
+    //Mijenja filter za prikaz task-ova
     changeFilter = (new_filter) => {
       this.setState({filter: new_filter});
+    };
+
+    //Mijenja status datog task-a
+    changeTaskStatus = (index, new_status) => {
+      var cur_tasks = this.state.tasks;
+      cur_tasks[index - 1].status = new_status;
+      this.setState({tasks: cur_tasks});
     };
 
   render() {
@@ -44,6 +53,7 @@ class App extends Component {
           <SearchBar />
           <ToDoList
           filter={this.state.filter}
+          changeTaskStatus={this.changeTaskStatus}
           tasks={this.state.tasks}/>
           <Filter
           changeFilter={this.changeFilter}/>

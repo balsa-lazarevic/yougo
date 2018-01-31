@@ -9,8 +9,7 @@ class SearchBar extends Component {
 
     render () {
         return (
-          <div className="search-bar">
-            <form className="form-inline">
+          <div className="search-bar row">
                 <div className="form-group col-sm-8">
                   <label htmlFor="input-term" className="sr-only">Input term</label>
                   <input
@@ -21,7 +20,6 @@ class SearchBar extends Component {
                     value={this.state.term}
                     onChange={event => this.onInputChange(event.target.value)}/>
                 </div>
-            </form>
           </div>
         );
     }

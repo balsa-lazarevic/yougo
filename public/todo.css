@@ -28,7 +28,10 @@ html,
 body {
   height: 100%;
   background-size: cover;
+  /*Za random pozadinu
   background-image: url(https://source.unsplash.com/1600x900/?business,technology);
+  */
+  background-image: url('/pozadina.jpeg');
 }
 
 body {
@@ -116,7 +119,6 @@ body {
 }
 
 .todo-list {
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -129,5 +131,9 @@ body {
 }
 
 .search-bar {
-    margin-top: 10px;
+
+}
+.add-dugme {
+  padding-right: 30px;
+  padding-left: 30px;
 }

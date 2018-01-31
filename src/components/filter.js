@@ -10,7 +10,7 @@ class Filter extends Component {
     render () {
       //za aktiviranje odgovarajuceg dugmeta
       var klase = ["btn btn-" + this.state.all, "btn btn-" + this.state.active, "btn btn-" + this.state.completed];
-      
+
       return (
         <div className="btn-group" role="group" aria-label="Filter">
           <button type="button" className={klase[0]} onClick={event => this.changeFilter('all')}>All</button>
@@ -22,9 +22,9 @@ class Filter extends Component {
 
     changeFilter(new_filter) {
       this.props.changeFilter(new_filter);
-      if(new_filter == 'all') { this.setState({all: 'primary', active: 'info', completed: 'info'});}
-      else if(new_filter == 'active') { this.setState({all: 'info', active: 'primary', completed: 'info'});}
-      else if(new_filter == 'completed') { this.setState({all: 'info', active: 'info', completed: 'primary'});}
+      if(new_filter === 'all') { this.setState({all: 'primary', active: 'info', completed: 'info'});}
+      else if(new_filter === 'active') { this.setState({all: 'info', active: 'primary', completed: 'info'});}
+      else if(new_filter === 'completed') { this.setState({all: 'info', active: 'info', completed: 'primary'});}
     }
 }
 
