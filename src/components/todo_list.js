@@ -31,9 +31,19 @@ class ToDoList extends Component {
             });
           }
 
+          //filteruje po search-u
+          var search_term = this.props.search.term;
+          //Pri ucitavanju prikazuje kao undefined pa moram da provjeravam na to
+          if(search_term !== undefined && search_term.length > 2)
+          {
+            tasks = tasks.filter(function(task) {
+              return task.name.includes(search_term);
+            });
+          }
+
           //Ubacuje filterovane task-ove za prikaz dalje
           const todoItems = tasks.map((task) => {
-              return <ToDoItem task = {task} itemChangeTaskStatus={this.itemChangeTaskStatus}/>
+              return <ToDoItem task = {task} key={task.index} itemChangeTaskStatus={this.itemChangeTaskStatus}/>
           });
 
       return (

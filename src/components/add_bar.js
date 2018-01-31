@@ -18,6 +18,7 @@ class AddBar extends Component {
                   id="input-term"
                   placeholder="Add a todo..."
                   value={this.state.term}
+                  onKeyPress={this.ifEnter}
                   onChange={event => this.onInputChange(event.target.value)}/>
               </div>
               <div className="form-group col-sm-4">
@@ -30,11 +31,12 @@ class AddBar extends Component {
     onInputChange(term) {
       this.setState({term});
     }
-
-    //Trebalo bi da prekida onsubmit kad se klikne enter
-    preventEnter() {
-      console.log('enter');
-      return false;
+    //Dodaje task ako je enter
+    ifEnter(character) {
+      if(character.which === 13)
+      {
+        //...pozovi donji addItem
+      }
     }
 
     //Dodaje task, nakon sto ga validate-uje zove callback iz App.js

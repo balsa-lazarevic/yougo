@@ -15,7 +15,7 @@ class App extends Component {
             {name:'Add a ToDo item', index: 2, status: 'active'}
           ],
           filter: 'all',
-          search: ''
+          search: 't'
         }
     }
 
@@ -37,6 +37,11 @@ class App extends Component {
       this.setState({filter: new_filter});
     };
 
+    //Mijenja filter za prikaz task-ova
+    changeSearchTerm = (new_search_term) => {
+      this.setState({search: new_search_term});
+    };
+
     //Mijenja status datog task-a
     changeTaskStatus = (index, new_status) => {
       var cur_tasks = this.state.tasks;
@@ -50,9 +55,11 @@ class App extends Component {
         <div className="card-body">
           <AddBar
           addItem={this.addItem}/>
-          <SearchBar />
+          <SearchBar
+          changeSearchTerm={this.changeSearchTerm}/>
           <ToDoList
           filter={this.state.filter}
+          search={this.state.search}
           changeTaskStatus={this.changeTaskStatus}
           tasks={this.state.tasks}/>
           <Filter
