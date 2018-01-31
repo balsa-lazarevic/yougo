@@ -18,7 +18,7 @@ class AddBar extends Component {
                   id="input-term"
                   placeholder="Add a todo..."
                   value={this.state.term}
-                  onKeyPress={this.ifEnter}
+                  onKeyPress={event => this.ifEnter(event)}
                   onChange={event => this.onInputChange(event.target.value)}/>
               </div>
               <div className="form-group col-sm-4">
@@ -28,14 +28,17 @@ class AddBar extends Component {
           </div>
         );
     }
+    //Na svaku promjenu inputa mijenja state
     onInputChange(term) {
       this.setState({term});
     }
+
     //Dodaje task ako je enter
     ifEnter(character) {
       if(character.which === 13)
       {
         //...pozovi donji addItem
+        this.addItem();
       }
     }
 
