@@ -17,7 +17,7 @@ class AddBar extends Component {
                   className="form-control"
                   id="input-term"
                   placeholder="Add a todo..."
-                  autofocus="autofocus"
+                  autoFocus="autofocus"
                   value={this.state.term}
                   onKeyPress={event => this.ifEnter(event)}
                   onChange={event => this.onInputChange(event.target.value)}/>
