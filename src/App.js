@@ -15,7 +15,7 @@ class App extends Component {
             {name:'Add a ToDo item', index: 2, status: 'active'}
           ],
           filter: 'all',
-          search: 't'
+          search: ''
         }
     }
 
