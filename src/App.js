@@ -31,18 +31,20 @@ class App extends Component {
           tasks.push(new_task);
           this.setState({tasks: tasks});
           //Save-uje izmjenu u cookie
-          cookie.save('tasks', this.state.tasks, { path: '/' });
+          var expires = this.cookieDatum();
+          cookie.save('tasks', this.state.tasks, { path: '/', expires: expires });
       };
 
       clearTasks = () => {
-            //Clear-uje task-ove i postavlja jedan (radi indexovanja)
-            var cleared_tasks = [
-              {name:'Create ToDo list', index: 1, status: 'completed'},
-              {name:'Add a ToDo item', index: 2, status: 'active'}
-            ];
-            this.setState({tasks: cleared_tasks});
-            //Save-uje izmjenu u cookie
-            cookie.save('tasks', cleared_tasks, { path: '/' });
+          //Clear-uje task-ove i postavlja jedan (radi indexovanja)
+          var cleared_tasks = [
+            {name:'Create ToDo list', index: 1, status: 'completed'},
+            {name:'Add a ToDo item', index: 2, status: 'active'}
+          ];
+          this.setState({tasks: cleared_tasks});
+          //Save-uje izmjenu u cookie
+          var expires = this.cookieDatum();
+          cookie.save('tasks', cleared_tasks, { path: '/', expires: expires });
         };
 
     //Mijenja filter za prikaz task-ova
@@ -61,21 +63,31 @@ class App extends Component {
       cur_tasks[index - 1].status = new_status;
       this.setState({tasks: cur_tasks});
       //Save-uje izmjenu u cookie
-      cookie.save('tasks', this.state.tasks, { path: '/' });
+      var expires = this.cookieDatum();
+      cookie.save('tasks', this.state.tasks, { path: '/', expires: expires });
+      console.log(this.cookieDatum());
     };
 
     //Prije renderovanja
     componentWillMount() {
-        //Za cookies
-        if(cookie.load('tasks') === undefined)
-        {
-          cookie.save('tasks', this.state.tasks, { path: '/' });
-        }
-        //ako ima cookie-a onda uvozi snimljene task-ove
-        else {
-          this.setState({tasks: cookie.load('tasks')});
-        }
+      //Za cookies
+      if(cookie.load('tasks') === undefined)
+      {
+        var expires = this.cookieDatum();
+        cookie.save('tasks', this.state.tasks, { path: '/', expires: expires });
       }
+      //ako ima cookie-a onda uvozi snimljene task-ove
+      else {
+        this.setState({tasks: cookie.load('tasks')});
+      }
+    }
+
+    //Vraca datum za expires za cookie
+    cookieDatum() {
+      var datum = new Date();
+      datum.setTime(datum.getTime()+(365*24*60*60*1000)); //godinu dana
+      return datum;
+    }
 
   render() {
     return (
