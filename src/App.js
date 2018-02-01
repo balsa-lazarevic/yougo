@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cookie from 'react-cookies';
 import AddBar from './components/add_bar';
 import SearchBar from './components/search_bar';
 import ToDoList from './components/todo_list';
@@ -29,8 +30,20 @@ class App extends Component {
           var new_task = {name: validatedItem, index: new_index, status: 'active'};
           tasks.push(new_task);
           this.setState({tasks: tasks});
-          console.log(tasks);
+          //Save-uje izmjenu u cookie
+          cookie.save('tasks', this.state.tasks, { path: '/' });
       };
+
+      clearTasks = () => {
+            //Clear-uje task-ove i postavlja jedan (radi indexovanja)
+            var cleared_tasks = [
+              {name:'Create ToDo list', index: 1, status: 'completed'},
+              {name:'Add a ToDo item', index: 2, status: 'active'}
+            ];
+            this.setState({tasks: cleared_tasks});
+            //Save-uje izmjenu u cookie
+            cookie.save('tasks', cleared_tasks, { path: '/' });
+        };
 
     //Mijenja filter za prikaz task-ova
     changeFilter = (new_filter) => {
@@ -47,7 +60,22 @@ class App extends Component {
       var cur_tasks = this.state.tasks;
       cur_tasks[index - 1].status = new_status;
       this.setState({tasks: cur_tasks});
+      //Save-uje izmjenu u cookie
+      cookie.save('tasks', this.state.tasks, { path: '/' });
     };
+
+    //Prije renderovanja
+    componentWillMount() {
+        //Za cookies
+        if(cookie.load('tasks') === undefined)
+        {
+          cookie.save('tasks', this.state.tasks, { path: '/' });
+        }
+        //ako ima cookie-a onda uvozi snimljene task-ove
+        else {
+          this.setState({tasks: cookie.load('tasks')});
+        }
+      }
 
   render() {
     return (
@@ -63,7 +91,8 @@ class App extends Component {
           changeTaskStatus={this.changeTaskStatus}
           tasks={this.state.tasks}/>
           <Filter
-          changeFilter={this.changeFilter}/>
+          changeFilter={this.changeFilter}
+          clearTasks={this.clearTasks}/>
         </div>
       </div>
     );
