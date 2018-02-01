@@ -36,7 +36,7 @@ class App extends Component {
       };
 
       clearTasks = () => {
-          //Clear-uje task-ove i postavlja jedan (radi indexovanja)
+          //Clear-uje task-ove i postavlja pocetne (radi indexovanja)
           var cleared_tasks = [
             {name:'Create ToDo list', index: 1, status: 'completed'},
             {name:'Add a ToDo item', index: 2, status: 'active'}
