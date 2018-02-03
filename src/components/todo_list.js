@@ -3,7 +3,7 @@ import ToDoItem from './todo_item';
 
 class ToDoList extends Component {
 
-    //
+    //Mijenja status task-a
     itemChangeTaskStatus = (index, status) => {
       this.props.changeTaskStatus(index, status);
     }
