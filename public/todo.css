@@ -28,10 +28,9 @@ html,
 body {
   height: 100%;
   background-size: cover;
-  /*Za random pozadinu
-  background-image: url(https://source.unsplash.com/1600x900/?business,technology);
-  */
-  background-image: url('/pozadina.jpeg');
+  /*Za random pozadinu */
+  background-image: url(https://source.unsplash.com/1600x900/?summer,montenegro,budva,kotor,tivat);
+  /*background-image: url('/pozadina.jpeg');*/
 }
 
 body {
@@ -115,7 +114,8 @@ body {
 
 /* Moj CSS */
 .todo-card {
-  min-width: 400px;
+  min-width: 500px;
+  border-radius: 8px;
 }
 
 .todo-list {
@@ -136,4 +136,8 @@ body {
 .add-dugme {
   padding-right: 30px;
   padding-left: 30px;
+}
+
+.form-group {
+  margin-bottom: 0rem;
 }

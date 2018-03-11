@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "horizon-youtube-mp3": "^1.8.1",
     "react": "^16.2.0",
-    "react-cookie": "^2.1.2",
-    "react-cookies": "^0.1.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0"
   },
